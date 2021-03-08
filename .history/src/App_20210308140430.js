@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import React, { Component, useState } from "react";
 import classes from "./App.css";
 import Person from "./Person/Person";
-import AppError from "./AppError/AppError";
+
 //  * ************ Functional Components
 
 // const App = () => {
@@ -89,14 +89,13 @@ class App extends Component {
         <div>
           {this.state.persons.map((p, index) => {
             return (
-              <AppError key={p.id}>
-                <Person
-                  change={(event) => this.nameChangeHandler(event, p.id)}
-                  click={() => this.deleteHandler(index)}
-                  name={p.name}
-                  age={p.age}
-                ></Person>
-              </AppError>
+              <Person
+                change={(event) => this.nameChangeHandler(event, p.id)}
+                click={() => this.deleteHandler(index)}
+                name={p.name}
+                age={p.age}
+                key={p.id}
+              ></Person>
             );
           })}
         </div>

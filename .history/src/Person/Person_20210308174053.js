@@ -5,7 +5,7 @@ import classes from "./Person.css";
 const person = ({ name, children, click, change }) => {
   const rnd = Math.random();
 
-  if (rnd > 0.7) throw new Error("Something went Wrong");
+  if (rnd > 0.7) throw new AppError();
 
   return (
     <div className={classes.Person}>

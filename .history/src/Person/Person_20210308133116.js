@@ -1,6 +1,5 @@
 import React from "react";
 import Radium from "radium";
-import "./Person.css";
 
 const person = ({ name, children, click, change }) => {
   return (

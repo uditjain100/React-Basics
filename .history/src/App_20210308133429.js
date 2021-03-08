@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import React, { Component, useState } from "react";
 import "./App.css";
+import Radium from "radium";
 import Person from "./Person/Person";
 
 //  * ************ Functional Components
@@ -136,4 +137,4 @@ class App extends Component {
   //   );
   // }
 }
-export default App;
+export default Radium(App);

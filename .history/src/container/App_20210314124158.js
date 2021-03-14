@@ -2,7 +2,8 @@
 import React, { Component, useState } from "react";
 import classes from "./App.css";
 import Persons from "../components/Persons/Persons";
-import Cockpit from "../components/Cockpit/Cockpit";
+import AppError from "../AppError/AppError";
+import cockpit from "../components/Cockpit/Cockpit";
 
 //  * ************ Functional Components
 
@@ -75,16 +76,27 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "yellow",
+      color: "white",
+      border: "2px white solid",
+      // ":hover": {
+      //   backgroundColor: "green",
+      // },
+    };
+
     var persons = null;
     if (this.state.showPersons) {
       persons = (
-        <Persons
-          persons={this.state.persons}
-          deleted={this.deleteHandler}
-          changed={this.nameChangeHandler}
-        />
+        <div>
+          <Persons
+            persons={this.state.persons}
+            deleted={this.deleteHandler}
+            changed={this.nameChangeHandler}
+          />
+        </div>
       );
-
+      style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "blue",
       // };
@@ -97,10 +109,7 @@ class App extends Component {
     return (
       // It is not HTMl because it is JSX (JavaScript XML)
       <div className={classes.App}>
-        <header className={classes}>
-          <Cockpit title={this.props.appTitle} toggled={this.toggleHandler} />
-          {persons}
-        </header>
+        <header className={classes}>{persons}</header>
       </div>
     );
   }

@@ -2,6 +2,7 @@
 import React, { Component, useState } from "react";
 import classes from "./App.css";
 import Persons from "../components/Persons/Persons";
+import AppError from "../AppError/AppError";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 //  * ************ Functional Components
@@ -78,13 +79,14 @@ class App extends Component {
     var persons = null;
     if (this.state.showPersons) {
       persons = (
-        <Persons
-          persons={this.state.persons}
-          deleted={this.deleteHandler}
-          changed={this.nameChangeHandler}
-        />
+        <div>
+          <Persons
+            persons={this.state.persons}
+            deleted={this.deleteHandler}
+            changed={this.nameChangeHandler}
+          />
+        </div>
       );
-
       // style[":hover"] = {
       //   backgroundColor: "blue",
       // };
@@ -98,7 +100,7 @@ class App extends Component {
       // It is not HTMl because it is JSX (JavaScript XML)
       <div className={classes.App}>
         <header className={classes}>
-          <Cockpit title={this.props.appTitle} toggled={this.toggleHandler} />
+          <Cockpit toggled={this.toggleHandler} />
           {persons}
         </header>
       </div>

@@ -2,7 +2,7 @@
 import React, { Component, useState } from "react";
 import classes from "./App.css";
 import Persons from "../components/Persons/Persons";
-import Cockpit from "../components/Cockpit/Cockpit";
+import AppError from "../AppError/AppError";
 
 //  * ************ Functional Components
 
@@ -75,16 +75,38 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "yellow",
+      color: "white",
+      border: "2px white solid",
+      // ":hover": {
+      //   backgroundColor: "green",
+      // },
+    };
+
     var persons = null;
     if (this.state.showPersons) {
       persons = (
-        <Persons
-          persons={this.state.persons}
-          deleted={this.deleteHandler}
-          changed={this.nameChangeHandler}
-        />
+        <div>
+          <Persons
+            deleted={this.deleteHandler}
+            changed={this.nameChangeHandler}
+          />
+          {this.state.persons.map((p, index) => {
+            return (
+              <AppError key={p.id}>
+                <Person
+                  change={(event) => this.nameChangeHandler(event, p.id)}
+                  click={() => this.deleteHandler(index)}
+                  name={p.name}
+                  age={p.age}
+                ></Person>
+              </AppError>
+            );
+          })}
+        </div>
       );
-
+      style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "blue",
       // };
@@ -98,7 +120,10 @@ class App extends Component {
       // It is not HTMl because it is JSX (JavaScript XML)
       <div className={classes.App}>
         <header className={classes}>
-          <Cockpit title={this.props.appTitle} toggled={this.toggleHandler} />
+          <h1> Hey there, Ceased Meteor this Side </h1>
+          <button onClick={this.toggleHandler} style={style}>
+            Toggle
+          </button>
           {persons}
         </header>
       </div>

@@ -98,7 +98,7 @@ class App extends Component {
       // It is not HTMl because it is JSX (JavaScript XML)
       <div className={classes.App}>
         <header className={classes}>
-          <Cockpit title={this.props.appTitle} toggled={this.toggleHandler} />
+          <Cockpit toggled={this.toggleHandler} />
           {persons}
         </header>
       </div>
